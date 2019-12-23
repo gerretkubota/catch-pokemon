@@ -27,6 +27,7 @@ const App = () => {
         setWildPokemon({
           name: res.data.name,
           image: res.data.sprites.front_default,
+          id: res.data.id,
         })
       )
       .catch(err => alert(err));
@@ -34,7 +35,16 @@ const App = () => {
   };
 
   const catchPokemon = () => {
-    setCaughtPokemon([...caughtPokemon, wildPokemon]);
+    setCaughtPokemon(state => {
+      const pokemonExists = state.findIndex(
+        pokemon => wildPokemon.id === pokemon.id
+      );
+      if (pokemonExists < 0) {
+        state = [...state, wildPokemon];
+        state.sort((a, b) => a.id - b.id);
+      }
+      return state;
+    });
     encounterPokemon();
   };
 
