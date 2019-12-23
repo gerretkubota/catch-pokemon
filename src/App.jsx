@@ -2,14 +2,13 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Pokemon from './components/Pokemon/Pokemon.jsx';
 // import Card from './components/Card/Card.jsx';
-// import PokemonList from './components/PokemonList/PokemonList.jsx';
+import PokemonList from './components/PokemonList/PokemonList.jsx';
 
 const App = () => {
   const pokemonURL = 'https://pokeapi.co/api/v2';
-  const [pokemon, setPokemon] = useState();
-  const [totalPokemon, setTotalPokemon] = useState();
-  const [randomId, setRandomId] = useState();
+  const [wildPokemon, setWildPokemon] = useState();
   const [caughtPokemon, setCaughtPokemon] = useState([]);
+  const [totalPokemon, setTotalPokemon] = useState();
 
   useEffect(() => {
     encounterPokemon();
@@ -25,7 +24,7 @@ const App = () => {
         cancelToken: new axios.CancelToken(c => (cancel = c)),
       })
       .then(res =>
-        setPokemon({
+        setWildPokemon({
           name: res.data.name,
           image: res.data.sprites.front_default,
         })
@@ -35,21 +34,31 @@ const App = () => {
   };
 
   const catchPokemon = () => {
-    console.log('clicked!');
+    setCaughtPokemon([...caughtPokemon, wildPokemon]);
+    encounterPokemon();
+  };
+
+  const releasePokemon = (e, index) => {
+    caughtPokemon.splice(index, 1);
+    setCaughtPokemon([...caughtPokemon]);
   };
 
   return (
     <div>
       <h3>Catch a Pokemon!</h3>
-      {pokemon ? (
+      {wildPokemon ? (
         <Pokemon
-          name={pokemon.name}
-          image={pokemon.image}
+          name={wildPokemon.name}
+          image={wildPokemon.image}
           catchPokemon={catchPokemon}
         />
       ) : (
         'Loading'
       )}
+      <PokemonList
+        caughtPokemon={caughtPokemon}
+        releasePokemon={releasePokemon}
+      />
     </div>
   );
 };
