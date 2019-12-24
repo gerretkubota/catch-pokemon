@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Pokemon from './components/Pokemon/Pokemon.jsx';
-// import Card from './components/Card/Card.jsx';
 import PokemonList from './components/PokemonList/PokemonList.jsx';
+
+import './main.css';
 
 const App = () => {
   const pokemonURL = 'https://pokeapi.co/api/v2';
@@ -49,13 +50,15 @@ const App = () => {
   };
 
   const releasePokemon = (e, index) => {
-    caughtPokemon.splice(index, 1);
-    setCaughtPokemon([...caughtPokemon]);
+    setCaughtPokemon(state => {
+      state.splice(index, 1);
+      return [...state];
+    });
   };
 
   return (
-    <div>
-      <h3>Catch a Pokemon!</h3>
+    <div className="app-container">
+      <h1>Catch a Pokemon!</h1>
       {wildPokemon ? (
         <Pokemon
           name={wildPokemon.name}

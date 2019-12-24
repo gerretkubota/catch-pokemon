@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 
 import Card from '../Card/Card.jsx';
 
+import './main.css';
+
 const PokemonList = ({ caughtPokemon, releasePokemon }) => (
-  <div style={{ width: 200 }}>
+  <div className="pokemon-list-container">
     {caughtPokemon.map((pokemon, index) => (
       <Card
         key={`${pokemon.name}${index}`}
