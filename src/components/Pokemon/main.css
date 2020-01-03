@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
 
-  height: 500px; /* 300px */
+  height: 400px; /* 300px */
   background-color: #fefefe;
 
   font-weight: 500;
@@ -35,7 +35,12 @@
   outline: none;
 
   font-weight: 500;
+  font-size: 18px;
 }
-.pokemon-name {
+
+.inner-pokemon-container .pokemon-name {
+  font-size: 2em;
+  font-weight: 500;
+
   text-transform: capitalize;
 }

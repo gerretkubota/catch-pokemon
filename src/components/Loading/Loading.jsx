@@ -16,7 +16,11 @@ const Loading = () => {
     return () => window.clearInterval(interval);
   }, [text]);
 
-  return <div style={{ height: 500 }}>{text}</div>;
+  return (
+    <div className="loading-container" style={{ height: 500 }}>
+      {text}
+    </div>
+  );
 };
 
 export default Loading;

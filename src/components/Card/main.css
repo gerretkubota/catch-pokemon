@@ -18,10 +18,13 @@
   width: 90%;
   border-radius: 5px;
 
+  font-size: 1em;
+  font-weight: 500;
   background-color: yellow;
   outline: none;
 }
 
-.pokemon-name {
+.card-container .pokemon-name {
   text-transform: capitalize;
+  color: #fff;
 }

@@ -77,7 +77,7 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <h1>Catch a Pokemon!</h1>
+      <div className="app-header">Catch a Pokemon!</div>
       {wildPokemon && totalPokemon ? (
         <Pokemon
           name={wildPokemon.name}

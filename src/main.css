@@ -18,3 +18,12 @@
   height: 100%;
   width: 100%;
 }
+
+.app-container .app-header {
+  margin: 20px 0px;
+
+  font-size: 4em;
+  font-weight: 500;
+  color: yellow;
+  text-shadow: 2px 4px 5px blue;
+}
