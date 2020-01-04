@@ -14,6 +14,7 @@ const PokemonList = ({ caughtPokemon, releasePokemon }) => (
         image={pokemon.image}
         release={releasePokemon}
         index={index}
+        id={pokemon.id}
       />
     ))}
   </div>
