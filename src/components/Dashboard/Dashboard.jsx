@@ -9,7 +9,7 @@ const Dashboard = () => {
   const pokemonURL = 'https://pokeapi.co/api/v2';
   const [wildPokemon, setWildPokemon] = useState();
   const [caughtPokemon, setCaughtPokemon] = useState([]);
-  const [totalPokemon, setTotalPokemon] = useState(-1);
+  const [totalPokemon, setTotalPokemon] = useState(0);
 
   useEffect(() => {
     grabAllPokemon();
